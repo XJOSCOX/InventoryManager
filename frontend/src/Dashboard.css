@@ -1,0 +1,56 @@
+.dashboard {
+    padding: 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #007bff;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+}
+
+.navbar button {
+    margin-left: 1rem;
+    background: white;
+    color: #007bff;
+    font-weight: 600;
+    border: 2px solid white;
+}
+
+.navbar button:hover {
+    background: #e0ecff;
+}
+
+.dashboard-main {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+.product-table th,
+.product-table td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.product-table th {
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+.product-table tr:hover {
+    background-color: #f9f9f9;
+}
