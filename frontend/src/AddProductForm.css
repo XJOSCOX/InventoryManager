@@ -1,0 +1,17 @@
+.add-product-form {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+.add-product-form h3 {
+    margin-bottom: 1rem;
+}
+
+.add-product-form input {
+    width: 100%;
+    margin-bottom: 1rem;
+}

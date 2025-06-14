@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
+import AddProductForm from "./AddProductForm";
 
 function Dashboard({ user, onLogout }) {
     const [products, setProducts] = useState([]);
 
+    // Fetch products when the component mounts
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -15,13 +17,19 @@ function Dashboard({ user, onLogout }) {
                 });
                 const data = await res.json();
                 if (res.ok) setProducts(data);
+                else console.error("Failed to load products.");
             } catch (err) {
-                console.error("Failed to fetch products", err);
+                console.error("Error fetching products:", err);
             }
         };
 
         fetchProducts();
     }, []);
+
+    // Add new product to state after creation
+    const handleProductAdded = (newProduct) => {
+        setProducts((prev) => [...prev, newProduct]);
+    };
 
     return (
         <div className="dashboard">
@@ -40,6 +48,14 @@ function Dashboard({ user, onLogout }) {
 
             <main className="dashboard-main">
                 <h3>Welcome, {user.username} ({user.role}) 👋</h3>
+
+                {/* Add Product form only for admin or manager */}
+                {(user.role === "admin" || user.role === "manager") && (
+                    <AddProductForm onProductAdded={handleProductAdded} />
+                )}
+
+                {/* Products Table */}
+                <h4 style={{ marginTop: "2rem" }}>📋 Product List</h4>
                 <table className="product-table">
                     <thead>
                         <tr>
@@ -52,7 +68,9 @@ function Dashboard({ user, onLogout }) {
                     </thead>
                     <tbody>
                         {products.length === 0 ? (
-                            <tr><td colSpan="5">No products available.</td></tr>
+                            <tr>
+                                <td colSpan="5">No products available.</td>
+                            </tr>
                         ) : (
                             products.map((product) => (
                                 <tr key={product.id}>
