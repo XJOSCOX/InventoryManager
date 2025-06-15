@@ -15,6 +15,9 @@ app.use("/api/products", productRoutes);
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes); // login route is now /api/login
 
+const transactionRoutes = require("./routes/transactionRoutes");
+app.use("/api/transactions", transactionRoutes);
+
 
 // Default route
 app.get("/", (req, res) => {
